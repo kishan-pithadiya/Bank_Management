@@ -1,0 +1,75 @@
+h4 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+
+  .layout{
+    margin-top: 20px;
+  }
+  
+  form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  div {
+    flex: 0 0 calc(50% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+  
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+  
+    .text-danger {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+  
+  button {
+    flex: 1 0 100%;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .faded-button {
+    opacity: 0.5;
+  }
+  
+  .dark-button {
+    opacity: 1;
+  }
+  

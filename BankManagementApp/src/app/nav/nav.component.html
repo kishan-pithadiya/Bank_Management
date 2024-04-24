@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
+        <a class="navbar-brand" >MyBankApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/customer/getallcust" routerLinkActive="active">Customer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"routerLink="/account/getallaccount" routerLinkActive="active">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/transactioninfo/getalltransaction" routerLinkActive="active">TransactionInfo</a>
+            </li>
+            </ul>
+            <div *ngIf="authserve.isloggedIn" class="ms-auto me-3">
+                <a (click)="logout()" class="btn link-danger" routerLinkActive="active">LogOut</a>
+            </div>
+        </div>
+      </nav>
+   
+</body>
+</html>

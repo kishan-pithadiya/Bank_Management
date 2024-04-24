@@ -1,0 +1,39 @@
+<div class="layout">
+
+<h4>Add Account</h4>
+
+<form  [formGroup]="accountForm" (ngSubmit)="addaccount()">
+    <div>
+      <label for="custId">CustomerId:</label>
+      <input type="number" id="custId" name="custId" formControlName="customerId" required>
+      <div class="text-danger" *ngIf="accountForm.controls?.['customerId'].touched">
+        <span *ngIf="accountForm.controls?.['customerId'].errors?.['required']">CustomerId is Required</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="AccTypeId">AccountType:</label>
+      <select id="AccTypeId" name="AccTypeId" formControlName="accountTypeId" required>
+        <option disabled >Select AccountType</option>
+        <option value= 1 >Saving</option>
+        <option value= 2 >Current</option>
+      </select>
+      <div class="text-danger" *ngIf="accountForm.controls?.['accountTypeId'].touched">
+        <span *ngIf="accountForm.controls?.['accountTypeId'].errors?.['required']">AccountType is Required</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="amount">Balance:</label>
+      <input type="number" id="amount" name="amount" formControlName="accountBalance" required>
+      <div class="text-danger" *ngIf="accountForm.controls?.['accountBalance'].touched">
+        <span *ngIf="accountForm.controls?.['accountBalance'].errors?.['required']">Amount is Required!</span>
+        <span *ngIf="accountForm.controls?.['accountBalance'].errors?.['min']">Amount should be greater than or equal to 0</span>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="accountForm.invalid" [ngClass]="{'faded-button': accountForm.invalid,'dark-button': accountForm.valid}">Add Account</button>
+
+</form>
+</div>
+  

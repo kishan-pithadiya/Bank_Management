@@ -1,0 +1,37 @@
+<div class="table-container">
+    <h4>All Accounts</h4>
+    <table *ngIf="accdata ; else NoAcc">
+      <thead>
+        <tr>
+          <th>AccountId</th>
+          <th>AccountNumber</th>
+          <th>CustomerId</th>
+          <th>AccountType</th>
+          <th>AccountBalance</th>
+          <th>AccountCreateDate</th>
+          <th>Transactions</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of accdata">
+          <td>{{ item.accountId }}</td>
+          <td>{{ item.accountNumber }}</td>
+          <td>{{ item.customerId}}</td>
+          <td *ngIf="item.accountTypeId==1 else current">Saving</td>
+          <ng-template #current>
+            <td>Current</td>
+          </ng-template>
+          <td>{{ item.accountBalance }}</td>
+          <td>{{ item.accountCreateDate | date:'dd-MM-yyyy'}}</td>
+          <td><a (click)="navigatetotransactioninfo(item.customerId,item.accountId)" class="link-primary">See Transactions</a></td>
+          <td><a (click)="deleteaccount(item.accountId)" class="link-danger">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #NoAcc>
+      <div class="no-acc"> 
+        No Accounts Found.
+      </div>
+    </ng-template>
+  </div>

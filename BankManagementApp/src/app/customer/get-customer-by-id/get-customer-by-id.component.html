@@ -1,0 +1,38 @@
+<h4>get-customer-by-id works!</h4>
+<div>
+    <label for="customerId">Enter Customer ID:</label>
+    <input type="number" id="customerId" name="customerId" [(ngModel)]="customerIdToGet">
+    <button (click)="getcustbyId()">GetCustById</button>
+</div> 
+
+
+<div class="table-container">
+    <table *ngIf="custData">
+      <thead>
+        <tr>
+          <th>CustomerID</th>
+          <th>CustomerFirstName</th>
+          <th>CustomerLastName</th>
+          <th>CustomerDateOfBirth</th>
+          <th>CustomerAdharNumber</th>
+          <th>CustomerEmail</th>
+          <th>Pincode</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ custData.customerId }}</td>
+          <td>{{ custData.customerFirstName }}</td>
+          <td>{{ custData.customerLastName}}</td>
+          <td>{{ custData.customerDateOfBirth }}</td>
+          <td>{{ custData.customerAdharNumber }}</td>
+          <td>{{ custData.customerEmail }}</td>
+          <td>{{ custData.customerPincode }}</td>
+          <td>{{ custData.customerCountry }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  

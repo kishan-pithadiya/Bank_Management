@@ -1,0 +1,78 @@
+<h4>Add Customer</h4>
+
+
+<form  [formGroup]="userForm" (ngSubmit)="addingCustomer()">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" formControlName="customerFirstName" required>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerFirstName'].touched">
+            <span *ngIf="userForm.controls?.['customerFirstName'].errors?.['required']">FirstName is Required</span>
+            <span *ngIf="userForm.controls?.['customerFirstName'].errors?.['minlength']">FirstName Minimum Length should be of 2 characters!</span>
+            <span *ngIf="userForm.controls?.['customerFirstName'].errors?.['maxlength']">FirstName Maximum Length should be of 100 characters!</span>
+            <span *ngIf="userForm.controls?.['customerFirstName'].errors?.['pattern']">FirstName Should Be Contains Only Characters!</span>
+          </div>
+    </div>
+  
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" formControlName="customerLastName" required>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerLastName'].touched">
+        <span *ngIf="userForm.controls?.['customerLastName'].errors?.['required']">LastName is Required</span>
+        <span *ngIf="userForm.controls?.['customerLastName'].errors?.['minlength']">LastName Minimum Length should be of 2 characters!</span>
+        <span *ngIf="userForm.controls?.['customerLastName'].errors?.['maxlength']">LastName Maximum Length should be of 100 characters!</span>
+        <span *ngIf="userForm.controls?.['customerLastName'].errors?.['pattern']">customerLastName Should Be Contains Only Characters!</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" formControlName="customerDateOfBirth" required>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerDateOfBirth'].touched" >
+        <span *ngIf="userForm.controls?.['customerDateOfBirth'].errors?.['required']; else invalidDob">DateOfBirth is Required</span>
+        <ng-template #invalidDob>
+        <span *ngIf="userForm.controls?.['customerDateOfBirth'].touched && userForm.get('customerDateOfBirth').hasError('invalidDob')">Please enter a date from 1900 or later until today.</span>
+      </ng-template>
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" formControlName="customerEmail" required>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerEmail'].touched">
+        <span *ngIf="userForm.controls?.['customerEmail'].errors?.['required']">Email is Required!</span>
+        <span *ngIf="userForm.controls?.['customerEmail'].errors?.['pattern']">Please Enter Valid Email!</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="pincode">Pin Code:</label>
+      <input type="text" id="pincode" name="pincode" formControlName="customerPincode" required>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerPincode'].touched">
+        <span *ngIf="userForm.controls?.['customerPincode'].errors?.['required']">Pincode is Required</span>
+        <span *ngIf="userForm.controls?.['customerPincode'].errors?.['pattern']">Pincode should be of 6 digits only!</span>
+     </div>
+    </div>
+  
+   
+    <div>
+      <label for="country">Country:</label>
+      <select id="country" name="country" formControlName="customerCountry" required>
+        <option value="" disabled>Select a Country</option>
+        <option *ngFor="let country of countryNames" [value]="country">{{ country }}</option>
+      </select>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerCountry'].touched">
+        <span *ngIf="userForm.controls?.['customerCountry'].errors?.['required']">Country is Required</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="aadharNumber">Aadhar Number:</label>
+      <input type="text" id="aadharNumber" name="aadharNumber" formControlName="customerAdharNumber" required>
+      <div class="text-danger" *ngIf="userForm.controls?.['customerAdharNumber'].touched">
+        <span *ngIf="userForm.controls?.['customerAdharNumber'].errors?.['required']">AdharNumber is Required</span>
+        <span *ngIf="userForm.controls?.['customerAdharNumber'].errors?.['pattern']">AdharNumber should be of 12 digits only!</span>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="userForm.invalid" [ngClass]="{'faded-button': userForm.invalid,'dark-button': userForm.valid}">Add Customer</button>
+  </form>

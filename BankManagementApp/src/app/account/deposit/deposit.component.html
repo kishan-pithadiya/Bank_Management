@@ -1,0 +1,39 @@
+<div class="layout">
+<h4>Deposit Money</h4>
+
+<form  [formGroup]="depositForm" (ngSubmit)="depositmoney()">
+    <div>
+      <label for="accnumber">AccountNumber</label>
+      <input type="number" id="accnumber" name="accnumber" formControlName="accnumber" required>
+      <div class="text-danger" *ngIf="depositForm.controls?.['accnumber'].touched">
+        <span *ngIf="depositForm.controls?.['accnumber'].errors?.['required']">AccountNumber is Required</span>
+        <span *ngIf="depositForm.controls?.['accnumber'].errors?.['pattern']">AccountNumber should be of 12 digits only!</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="AccTypeId">AccountType:</label>
+      <select id="AccTypeId" name="AccTypeId" formControlName="accTypeId" required>
+        <option value="" disabled >Select AccountType</option>
+        <option value="1">Saving</option>
+        <option value="2">Current</option>
+      </select>
+      <div class="text-danger" *ngIf="depositForm.controls?.['accTypeId'].touched">
+        <span *ngIf="depositForm.controls?.['accTypeId'].errors?.['required']">AccountType is Required</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="amount">Balance:</label>
+      <input type="number" id="amount" name="amount" formControlName="amount" required>
+      <div class="text-danger" *ngIf="depositForm.controls?.['amount'].touched">
+        <span *ngIf="depositForm.controls?.['amount'].errors?.['required']">Amount is Required!</span>
+        <span *ngIf="depositForm.controls?.['amount'].errors?.['min']">Amount should be greater than 0</span>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="depositForm.invalid" [ngClass]="{'faded-button': depositForm.invalid,'dark-button': depositForm.valid}">Deposit Money</button>
+
+</form>
+</div>
+  

@@ -1,0 +1,29 @@
+<div class="table-container">
+    <h4>All Transactions</h4>
+    <table *ngIf="transdata; else NoTrans">
+      <thead>
+        <tr>
+          <th>AccountId</th>
+          <th>TransactionType</th>
+          <th>Amount</th>
+          <th>TransactionDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of transdata">
+          <td>{{ item.accountId }}</td>
+          <td>{{ item.transactionType }}</td>
+          <td  *ngIf="item.transactionType=='Deposit' else withdraw" class="text-success">{{ item.amount}}</td>
+          <ng-template #withdraw>
+            <td class="text-danger">{{ item.amount}}</td>
+          </ng-template>
+          <td>{{ item.transactionDate | date:'dd-MM-yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #NoTrans>
+      <div class="no-trans"> 
+        No Transactions Found.
+      </div>
+    </ng-template>
+  </div>

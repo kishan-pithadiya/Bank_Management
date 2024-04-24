@@ -1,0 +1,38 @@
+<h4>All Customers</h4>
+<div class="table-container">
+    <table *ngIf="custdata ; else NoCust">
+      <thead>
+        <tr>
+          <th>CustomerID</th>
+          <th>CustomerFirstName</th>
+          <th>CustomerLastName</th>
+          <th>CustomerDateOfBirth</th>
+          <th>CustomerAdharNumber</th>
+          <th>CustomerEmail</th>
+          <th>Pincode</th>
+          <th>Country</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of custdata">
+          <td><a (click)="navigatetogetcustwithaccount(item.customerId)" class="link-primary">{{ item.customerId }}</a></td>
+          <td>{{ item.customerFirstName }}</td>
+          <td>{{ item.customerLastName}}</td>
+          <td>{{ item.customerDateOfBirth | date:'dd-MM-yyyy'}}</td>
+          <td>{{ item.customerAdharNumber }}</td>
+          <td>{{ item.customerEmail }}</td>
+          <td>{{ item.customerPincode }}</td>
+          <td>{{ item.customerCountry }}</td>
+          <td> <a (click)="navigatetoupdate(item.customerId)" class="link-primary">Update</a></td>
+          <td><a (click)="deletecustomer(item.customerId)" class="link-danger">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #NoCust>
+      <div class="no-cust"> 
+        No Customers Found.
+      </div>
+    </ng-template>
+  </div>

@@ -1,0 +1,32 @@
+<h4>get-account-by-id works!</h4>
+<div>
+    <label for="accountId">Enter Account ID:</label>
+    <input type="number" id="accountId" name="accountId" [(ngModel)]="accIdToGet">
+    <button (click)="getaccbyId()">GetAccById</button>
+</div>
+<div class="table-container">
+    <table *ngIf="accData">
+      
+            <thead>
+              <tr>
+                <th>AccountId</th>
+                <th>AccountNumber</th>
+                <th>CustomerId</th>
+                <th>AccountTypeId</th>
+                <th>AccountBalance</th>
+                <th>AccountCreateDate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ accData.accountId }}</td>
+                <td>{{ accData.accountNumber }}</td>
+                <td>{{ accData.customerId}}</td>
+                <td>{{ accData.accountTypeId }}</td>
+                <td>{{ accData.accountBalance }}</td>
+                <td>{{ accData.accountCreateDate }}</td>
+              </tr>
+            </tbody>
+          </table>
+   
+  </div>

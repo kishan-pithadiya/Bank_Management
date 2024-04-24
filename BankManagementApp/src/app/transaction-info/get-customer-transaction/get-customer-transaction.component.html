@@ -1,0 +1,36 @@
+<h4>Customer Transactions</h4>
+<!-- <div>
+    <label for="custId">Enter Customer ID:</label>
+    <input type="number" id="custId" name="custId" [(ngModel)]="custId">
+    <label for="accountId">Enter Account ID:</label>
+    <input type="number" id="accountId" name="accountId" [(ngModel)]="accId">
+    <button (click)=" getcusttransData()">GetCTransactionById</button>
+</div> -->
+<div class="table-container">
+    <table *ngIf="transdata.length > 0; else NoTrans">
+      <thead>
+        <tr>
+          <th>AccountId</th>
+          <th>TransactionType</th>
+          <th>Amount</th>
+          <th>TransactionDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of transdata">
+          <td>{{ item.accountId }}</td>
+          <td>{{ item.transactionType }}</td>
+          <td  *ngIf="item.transactionType=='Deposit' else withdraw" class="text-success">{{ item.amount}}</td>
+          <ng-template #withdraw>
+            <td class="text-danger">{{ item.amount}}</td>
+          </ng-template>
+          <td>{{ item.transactionDate | date:'dd-MM-yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #NoTrans>
+      <div class="no-trans"> 
+        No Transactions Found.
+      </div>
+    </ng-template>
+  </div>
